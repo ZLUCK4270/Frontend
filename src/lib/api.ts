@@ -41,7 +41,7 @@ export async function searchImage(
     const resp = await fetch(`${apiUrl.replace(/\/+$/, "")}/search/image`, {
       method: "POST",
       body: fd,
-      signal: AbortSignal.timeout(6000),
+      signal: AbortSignal.timeout(2500),
     });
 
     if (resp.ok) {
@@ -59,12 +59,14 @@ export async function searchImage(
   const scoredCatalog = CATALOG_JERSEYS.map((jersey, index) => {
     let baseScore = 0.88 - index * 0.05;
     
-    if (fileName.includes("peru") && jersey.id.includes("PER")) baseScore = 0.985;
+    if (fileName.includes("atelier") && jersey.id.includes("ATL-BESPOKE")) baseScore = 0.992;
+    else if ((fileName.includes("heritage") || fileName.includes("retro")) && jersey.id.includes("ATL-HERITAGE")) baseScore = 0.988;
+    else if ((fileName.includes("emerald") || fileName.includes("mesh")) && jersey.id.includes("ATL-PRO-EMERALD")) baseScore = 0.984;
+    else if (fileName.includes("peru") && jersey.id.includes("PER")) baseScore = 0.985;
     else if ((fileName.includes("arg") || fileName.includes("messi")) && jersey.id.includes("ARG")) baseScore = 0.978;
     else if ((fileName.includes("madrid") || fileName.includes("real")) && jersey.id.includes("RMA")) baseScore = 0.965;
     else if ((fileName.includes("barca") || fileName.includes("barcelona")) && jersey.id.includes("FCB")) baseScore = 0.962;
     else if (fileName.includes("boca") && jersey.id.includes("BOC")) baseScore = 0.958;
-    else if ((fileName.includes("subli") || fileName.includes("custom")) && jersey.id.includes("SUB")) baseScore = 0.972;
 
     return {
       jersey,

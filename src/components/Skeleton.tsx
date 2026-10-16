@@ -6,7 +6,7 @@ export function Skeleton({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`skeleton-shimmer rounded-xl bg-[var(--skeleton-bg)] ${className}`}
+      className={`atelier-skeleton rounded-xl bg-[var(--skeleton-bg)] ${className}`}
       {...props}
     />
   );
@@ -14,7 +14,7 @@ export function Skeleton({
 
 export function ResultCardSkeleton() {
   return (
-    <div className="result-card p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 items-start">
+    <div className="atelier-card p-5 sm:p-6 flex flex-col sm:flex-row gap-5 items-start">
       <Skeleton className="w-full sm:w-36 h-48 sm:h-36 rounded-2xl flex-shrink-0" />
       <div className="flex-1 w-full space-y-3">
         <div className="flex items-center justify-between gap-3">

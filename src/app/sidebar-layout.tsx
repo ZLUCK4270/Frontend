@@ -14,41 +14,40 @@ export default function SidebarLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col w-full bg-[var(--bg-main)] text-[var(--foreground)] antialiased">
-      {/* Slide-over Customer Drawer & Quote Assistant */}
+      {/* Slide-over Bespoke Kit & Quote Assistant */}
       <Sidebar
         sidebarOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
       />
 
-      {/* ── Top Navigation Bar (Strict Top Bar Contract) ── */}
+      {/* ── Top Bar Contract (3 Zones, gap-8) ── */}
       <header className="sticky top-0 z-30 h-16 border-b border-[var(--border)] bg-[var(--bg-surface-glass)] backdrop-blur-xl px-4 sm:px-8 flex items-center justify-between gap-8 transition-colors">
-        {/* Zone 1: Single Brand Wordmark Element */}
+        {/* Zone 1: Single text wordmark */}
         <Link
           href="/search"
-          className="text-lg font-bold tracking-tight text-[var(--foreground-heading)] whitespace-nowrap shrink-0 flex items-center gap-2.5"
+          className="text-base font-extrabold tracking-tight text-[var(--foreground-heading)] whitespace-nowrap shrink-0 flex items-center gap-2"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#00d2ff] to-[#0077ff] flex items-center justify-center text-slate-950 shadow-md shadow-cyan-500/20">
-            <Icons.Shirt className="w-4 h-4 text-slate-950" />
-          </div>
-          <span className="font-extrabold tracking-tight">
-            Aimari <span className="text-[#00d2ff]">Sublitex</span>
+          <span className="tracking-[0.18em] uppercase text-xs font-bold text-[#C5A880]">
+            Atelier
           </span>
+          <span className="font-bold tracking-tight text-white">Sublitex</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]/70" />
         </Link>
 
-        {/* Zone 2: 4 Clean Single-Line Nav Links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[var(--foreground-muted)]">
+        {/* Zone 2: 4 clean single-line nav links */}
+        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-wider text-[var(--foreground-muted)]">
           <Link
             href="/search"
             className={`hover:text-[var(--foreground-heading)] transition-colors whitespace-nowrap shrink-0 ${
-              pathname === "/search" ? "text-[#00d2ff] font-bold" : ""
+              pathname === "/search" ? "text-[#C5A880] font-bold" : ""
             }`}
           >
-            Buscar por Foto
+            Buscador Visual
           </Link>
           <Link
             href="/catalog"
             className={`hover:text-[var(--foreground-heading)] transition-colors whitespace-nowrap shrink-0 ${
-              pathname === "/catalog" ? "text-[#00d2ff] font-bold" : ""
+              pathname === "/catalog" ? "text-[#C5A880] font-bold" : ""
             }`}
           >
             Catálogo Oficial
@@ -56,82 +55,80 @@ export default function SidebarLayout({ children }: { children: ReactNode }) {
           <Link
             href="/eval"
             className={`hover:text-[var(--foreground-heading)] transition-colors whitespace-nowrap shrink-0 ${
-              pathname === "/eval" ? "text-[#00d2ff] font-bold" : ""
+              pathname === "/eval" ? "text-[#C5A880] font-bold" : ""
             }`}
           >
-            Ejemplos de Prueba
+            Muestrario Real
           </Link>
           <button
             onClick={() => setSidebarOpen(true)}
             className="hover:text-[var(--foreground-heading)] transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
-            Cotizar Sublimación
+            Cotizador a Medida
           </button>
         </nav>
 
-        {/* Zone 3: 1 Primary Action + Theme Toggle + Drawer Trigger */}
+        {/* Zone 3: 1 Primary Action + Theme Toggle + Mobile Menu */}
         <div className="flex items-center gap-3 shrink-0">
           <Link
             href="/search"
-            className="hidden sm:inline-flex px-4 py-2 text-xs font-bold text-slate-950 bg-gradient-to-r from-[#00d2ff] to-[#0084ff] rounded-lg hover:shadow-lg hover:shadow-cyan-500/20 active:scale-95 transition-all whitespace-nowrap shrink-0"
+            className="hidden sm:inline-flex px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#0A0D14] bg-[#C5A880] hover:bg-[#D4AF37] rounded-lg transition-all whitespace-nowrap shrink-0 active:scale-95"
           >
-            Subir Camiseta
+            Subir Foto
           </Link>
 
           <button
             onClick={toggle}
-            className="w-9 h-9 rounded-xl border border-[var(--border)] bg-[var(--input-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-[var(--foreground)] active:scale-95 transition-all cursor-pointer"
-            aria-label="Alternar tema"
-            title={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+            className="w-9 h-9 rounded-lg border border-[var(--border)] bg-[var(--input-bg)] flex items-center justify-center text-[var(--foreground-muted)] hover:text-[var(--foreground)] active:scale-95 transition-all cursor-pointer"
+            aria-label="Alternar tema visual"
           >
             {theme === "dark" ? (
-              <Icons.Sun className="w-4 h-4 text-amber-400" />
+              <Icons.Sun className="w-4 h-4 text-[#C5A880]" />
             ) : (
-              <Icons.Moon className="w-4 h-4 text-sky-600" />
+              <Icons.Moon className="w-4 h-4 text-slate-700" />
             )}
           </button>
 
           <button
             onClick={() => setSidebarOpen(true)}
-            className="p-2 rounded-xl border border-[var(--border)] bg-[var(--input-bg)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
-            aria-label="Abrir panel de asesoría y cotizador"
-            title="Asesoría y Cotizador"
+            className="p-2 rounded-lg border border-[var(--border)] bg-[var(--input-bg)] text-[var(--foreground-muted)] hover:text-[var(--foreground)] active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+            title="Abrir cotizador de prendas"
           >
-            <Icons.SlidersHorizontal className="w-4 h-4" />
-            <span className="text-xs font-medium hidden lg:inline">Asesor</span>
+            <Icons.SlidersHorizontal className="w-4 h-4 text-[#C5A880]" />
+            <span className="text-xs font-medium hidden lg:inline">Cotizar</span>
           </button>
         </div>
       </header>
 
-      {/* ── Main Public Viewport Container ── */}
+      {/* ── Main Viewport Container ── */}
       <main className="flex-1 w-full max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {children}
       </main>
 
-      {/* ── Clean Public Footer ── */}
+      {/* ── Refined Tailored Footer ── */}
       <footer className="border-t border-[var(--border)] bg-[var(--bg-subtle)] py-8 px-4 sm:px-8 text-xs text-[var(--foreground-muted)]">
         <div className="max-w-[1360px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="font-bold text-[var(--foreground-heading)]">Aimari Sublitex</span>
+            <span className="font-bold text-[var(--foreground-heading)]">Atelier Sublitex</span>
             <span aria-hidden="true">·</span>
-            <span>Buscador Visual y Confección Deportiva</span>
+            <span>Alta Sastrería Deportiva & Búsqueda Visual de Camisetas</span>
           </div>
 
           <div className="flex items-center gap-6">
             <Link href="/search" className="hover:text-[var(--foreground-heading)] transition-colors">
-              Buscar Camiseta
+              Buscador por Imagen
             </Link>
             <Link href="/catalog" className="hover:text-[var(--foreground-heading)] transition-colors">
-              Catálogo
+              Catálogo de Prendas
             </Link>
             <Link href="/eval" className="hover:text-[var(--foreground-heading)] transition-colors">
-              Ejemplos
+              Muestrario de Casos
             </Link>
             <button
               onClick={() => setSidebarOpen(true)}
               className="hover:text-[var(--foreground-heading)] transition-colors cursor-pointer"
             >
-              Cotizaciones
+              Cotización Directa
             </button>
           </div>
         </div>
