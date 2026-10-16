@@ -15,8 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Búsqueda visual de camisetas",
-  description: "Búsqueda visual RAG de camisetas deportivas",
+  title: "Aimari RAG Visual - Búsqueda de Camisetas",
+  description: "Búsqueda visual RAG y evaluación de camisetas deportivas con Fashion-CLIP, YOLO y reranking.",
+  openGraph: {
+    title: "Aimari RAG Visual - Búsqueda de Camisetas",
+    description: "Búsqueda visual RAG y evaluación de camisetas deportivas con Fashion-CLIP, YOLO y reranking.",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
